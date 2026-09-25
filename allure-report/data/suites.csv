@@ -1,4 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","3946","TC03: Verify error message when attempting login with empty credentials","chromium","2026-09-25","passed","2026-09-25","Part A — UI Automation: Q1. Invalid Login Scenarios","","",""
-"","8231","TC01: Verify error message for invalid registered credentials format","chromium","2026-09-25","passed","2026-09-25","Part A — UI Automation: Q1. Invalid Login Scenarios","","",""
-"","3549","TC02: Verify error message when providing an invalid email format","chromium","2026-09-25","passed","2026-09-25","Part A — UI Automation: Q1. Invalid Login Scenarios","","",""
