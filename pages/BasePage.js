@@ -6,15 +6,30 @@ export class BasePage {
     this.page = page;
   }
 
-  async navigateTo(path = '/') {
-    await this.page.goto(path);
+  async navigate(url = 'https://demowebshop.tricentis.com') {
+    await this.page.goto(url);
   }
 
-  async getElementText(locator) {
+  async clickElement(locator) {
+    await locator.waitFor({ state: 'visible', timeout: 10000 });
+    await locator.click();
+  }
+
+  async fillField(locator, value) {
+    await locator.waitFor({ state: 'visible', timeout: 10000 });
+    await locator.fill(value);
+  }
+
+  async getText(locator) {
+    await locator.waitFor({ state: 'visible', timeout: 10000 });
     return (await locator.textContent()).trim();
   }
 
   async isElementVisible(locator) {
-    return await locator.isVisible();
+    try {
+      return await locator.isVisible();
+    } catch {
+      return false;
+    }
   }
 }
