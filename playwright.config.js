@@ -2,32 +2,26 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
+  timeout: 30000,
+  expect: {
+    timeout: 5000
+  },
   fullyParallel: false,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
   workers: 1,
   reporter: [
-    ['line'],
-    [
-      'allure-playwright',
-      {
-        detail: true,
-        outputFolder: 'allure-results',
-        suiteTitle: false,
-      },
-    ],
-    ['html', { open: 'never' }]
+    ['html', { open: 'never' }],
+    ['allure-playwright']
   ],
   use: {
     baseURL: 'https://demowebshop.tricentis.com',
     trace: 'on-first-retry',
-    screenshot: 'on',
-    video: 'retain-on-failure',
+    screenshot: 'on', // Takes screenshots for every test step/completion and attaches to reports
+    video: 'retain-on-failure'
   },
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
+    }
   ],
 });
