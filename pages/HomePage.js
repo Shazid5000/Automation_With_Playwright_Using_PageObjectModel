@@ -6,14 +6,16 @@ export class HomePage extends BasePage {
    */
   constructor(page) {
     super(page);
-    this.loginLink = this.page.locator('a.ico-login');
+
+    this.registerLink = page.locator('a.ico-register');
+    this.loginLink = page.locator('a.ico-login');
   }
 
-  async navigate() {
-    await this.navigateTo('/');
+  async navigateToRegister() {
+    await this.clickElement(this.registerLink);
   }
 
-  async clickLogin() {
-    await this.loginLink.click();
+  async selectVirtualGiftCardProduct() {
+    await this.page.goto('https://demowebshop.tricentis.com/25-virtual-gift-card');
   }
 }
